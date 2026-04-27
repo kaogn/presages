@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Présages Premium — Carte Astrologique</title>
+    <meta
+      name="description"
+      content="Générez votre carte astrologique immersive : occidental, chinois et cycles énergétiques unifiés."
+    />
+    <meta property="og:title" content="Présages Premium — Carte Astrologique" />
+    <meta
+      property="og:description"
+      content="Découvrez votre énergie dominante et partagez votre phrase impact mystique."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="./og-preview-default.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="noise-overlay"></div>
+    <canvas id="starfield" aria-hidden="true"></canvas>
+
+    <header class="app-header">
+      <h1>Présages Premium</h1>
+      <button id="audioToggle" class="ghost-btn" aria-pressed="false">🔈 Son rituel</button>
+    </header>
+
+    <main class="container">
+      <section id="onboarding" class="card active">
+        <p class="eyebrow">Lecture astrologique unifiée</p>
+        <h2>Révélez votre carte céleste</h2>
+        <p class="subtitle">Occidental • Chinois • Cycles énergétiques</p>
+
+        <form id="astroForm" class="mystic-form">
+          <label>
+            Prénom
+            <input type="text" name="firstName" required minlength="2" placeholder="Ex. Camille" />
+          </label>
+
+          <label>
+            Date de naissance
+            <input type="date" name="birthDate" required />
+          </label>
+
+          <label class="time-label">
+            Heure de naissance
+            <input type="time" name="birthTime" />
+          </label>
+          <label class="checkbox-line">
+            <input type="checkbox" id="unknownTime" /> Je ne connais pas mon heure
+          </label>
+
+          <label>
+            Lieu de naissance
+            <input
+              type="text"
+              name="birthPlace"
+              list="citySuggestions"
+              required
+              placeholder="Ex. Lyon, France"
+            />
+            <datalist id="citySuggestions"></datalist>
+          </label>
+
+          <button type="submit" class="primary-btn">Générer ma carte</button>
+        </form>
+      </section>
+
+      <section id="loading" class="card hidden">
+        <div class="loader-circle"></div>
+        <p id="loadingMessage">Lecture des influences célestes…</p>
+      </section>
+
+      <section id="results" class="card hidden">
+        <div class="result-top">
+          <p class="eyebrow">Profil gratuit immédiat</p>
+          <h2 id="resultTitle"></h2>
+          <p id="shortSummary"></p>
+        </div>
+
+        <div class="astro-grid">
+          <article>
+            <h3>Occidental</h3>
+            <p id="westernResult"></p>
+          </article>
+          <article>
+            <h3>Chinois</h3>
+            <p id="chineseResult"></p>
+          </article>
+          <article>
+            <h3>Cycles énergétiques</h3>
+            <p id="vietnameseResult"></p>
+          </article>
+        </div>
+
+        <blockquote id="impactPhrase" class="impact"></blockquote>
+
+        <div class="share-actions">
+          <button id="downloadPreview" class="ghost-btn">Télécharger image</button>
+          <button id="sharePreview" class="primary-btn">Partager</button>
+        </div>
+
+        <section class="paywall parchment">
+          <h3>Version Premium • 4,99€</h3>
+          <ul>
+            <li>PDF 5 pages style parchemin</li>
+            <li>Personnalité profonde, amour, carrière</li>
+            <li>Cycles de vie et synthèse complète</li>
+          </ul>
+          <button id="buyPdf" class="primary-btn">Débloquer le PDF</button>
+        </section>
+
+        <section class="paywall">
+          <h3>Compatibilité • 2,99€</h3>
+          <p>Ajoutez une personne et révélez votre dynamique relationnelle.</p>
+          <button id="openCompatibility" class="ghost-btn">Tester une compatibilité</button>
+        </section>
+      </section>
+    </main>
+
+    <dialog id="compatibilityDialog">
+      <form id="compatibilityForm" class="mystic-form">
+        <h3>Compatibilité relationnelle</h3>
+        <label>Prénom<input type="text" name="name2" required /></label>
+        <label>Date de naissance<input type="date" name="birthDate2" required /></label>
+        <label>Heure de naissance<input type="time" name="birthTime2" /></label>
+        <label>
+          Lieu de naissance
+          <input type="text" name="birthPlace2" list="citySuggestions" required />
+        </label>
+        <div class="dialog-actions">
+          <button type="button" id="closeCompatibility" class="ghost-btn">Fermer</button>
+          <button type="submit" class="primary-btn">Analyser</button>
+        </div>
+      </form>
+
+      <section id="compatibilityResult" class="hidden">
+        <h3 id="compatibilityTitle"></h3>
+        <p id="compatibilityTeaser"></p>
+        <canvas id="radarChart" width="320" height="320"></canvas>
+        <button id="unlockCompatibility" class="primary-btn">Débloquer le détail complet — 2,99€</button>
+      </section>
+    </dialog>
+
+    <canvas id="shareCanvas" width="1080" height="1350" class="hidden"></canvas>
+
+    <script src="./app.js" defer></script>
+  </body>
+</html>
