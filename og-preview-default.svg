@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="g" cx="50%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#ffcc7d" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#090d20" stop-opacity="1"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <rect x="34" y="34" width="1132" height="562" fill="none" stroke="#d4a953" stroke-opacity="0.7" stroke-width="3"/>
+  <text x="80" y="230" fill="#ffcc7d" font-size="86" font-family="serif">Présages Premium</text>
+  <text x="80" y="310" fill="#f4efe4" font-size="48" font-family="serif">Carte astrologique immersive</text>
+</svg>
